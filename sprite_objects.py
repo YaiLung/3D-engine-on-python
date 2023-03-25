@@ -28,22 +28,6 @@ class Sprites:
                 'flag': 'decor',
                 'obj_action': []
             },
-            'npc_shlepa': {
-                'sprite': [pygame.image.load(f'sprites/slhlepa/{i}.png').convert_alpha() for i in range(8)],
-                'viewing_angles': True,
-                'shift': 0.0,
-                'scale': (1.1, 1.1),
-                'side': 50,
-                'animation': [],
-                'death_animation': [],
-                'is_dead': 'immortal',
-                'dead_shift': None,
-                'animation_dist': 800,
-                'animation_speed': 10,
-                'blocked': True,
-                'flag': 'decor',
-                'obj_action': [],
-            },
             'sprite_pin': {
                 'sprite': pygame.image.load('sprites/pin/base/0.png').convert_alpha(),
                 'viewing_angles': None,
@@ -95,7 +79,6 @@ class Sprites:
                 'obj_action': deque(
                     [pygame.image.load(f'sprites/devil/anim/{i}.png').convert_alpha() for i in range(9)]),
             },
-
             'sprite_door_v': {
                 'sprite': [pygame.image.load(f'sprites/doors/door_v/{i}.png').convert_alpha() for i in range(16)],
                 'viewing_angles': True,
@@ -153,7 +136,6 @@ class Sprites:
             SpriteObject(self.sprite_parameters['sprite_barrel'], (5.9, 2.1)),
             SpriteObject(self.sprite_parameters['sprite_pin'], (8.7, 2.5)),
             SpriteObject(self.sprite_parameters['npc_devil'], (7, 4)),
-            SpriteObject(self.sprite_parameters['npc_shlepa'], (7, 4)),
             SpriteObject(self.sprite_parameters['sprite_flame'], (8.6, 5.6)),
             SpriteObject(self.sprite_parameters['sprite_door_v'], (3.5, 3.5)),
             SpriteObject(self.sprite_parameters['sprite_door_h'], (1.5, 4.5)),
