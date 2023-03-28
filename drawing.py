@@ -4,11 +4,19 @@ from ray_casting import ray_Casting
 from map import mini_map
 
 class Drawing:
-    def __init__(self, sc, sc_map):
+    def __init__(self, sc, sc_map, player, clock):
         self.sc = sc
         self.sc_map = sc_map
-        self.font = pygame.font.SysFont("Arial" ,  36 , bold=True)
-        self.texture = pygame.image.load("img1/2127531.png").convert()
+        self.player = player
+        self.clock = clock
+        self.font = pygame.font.SysFont('Arial', 36, bold=True)
+        self.font_win = pygame.font.Font('font/font.ttf', 100)
+        self.textures = {1: pygame.image.load('img/1.png').convert(),
+                         2: pygame.image.load('img/wall4.png').convert(),
+                         3: pygame.image.load('img/wall5.png').convert(),
+                         4: pygame.image.load('img/wall6.png').convert(),
+                         'S': pygame.image.load('img/sky2.png').convert()
+                         }
 
     def backround(self):
         pygame.draw.rect(self.sc, DARKGRAY, (0, 0, width, half_heigth))
