@@ -18,6 +18,10 @@ class Drawing:
                          'S': pygame.image.load('img/sky2.png').convert()
                          }
 
+    # menu
+    self.menu_trigger = True
+    self.menu_picture = pygame.image.load('img/bg.jpg').convert()
+    
     def backround(self):
         pygame.draw.rect(self.sc, DARKGRAY, (0, 0, width, half_heigth))
         pygame.draw.rect(self.sc, DARKGRAY, (0, half_heigth, width, half_heigth))
