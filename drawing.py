@@ -38,9 +38,12 @@ class Drawing:
     self.sfx_length_count = 0
     self.sfx_length = len(self.sfx)
 
-    def backround(self):
-        pygame.draw.rect(self.sc, DARKGRAY, (0, 0, width, half_heigth))
-        pygame.draw.rect(self.sc, DARKGRAY, (0, half_heigth, width, half_heigth))
+    def background(self, angle):
+        sky_offset = -10 * math.degrees(angle) % WIDTH
+        self.sc.blit(self.textures['S'], (sky_offset, 0))
+        self.sc.blit(self.textures['S'], (sky_offset - WIDTH, 0))
+        self.sc.blit(self.textures['S'], (sky_offset + WIDTH, 0))
+        pygame.draw.rect(self.sc, DARKGRAY, (0, HALF_HEIGHT, WIDTH, HALF_HEIGHT))
 
     def world(self, player_pos, player_angle):
         ray_Casting(self.sc, player_pos, player_angle, self.texture)
