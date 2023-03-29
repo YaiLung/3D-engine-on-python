@@ -24,6 +24,20 @@ class Drawing:
     # weapon parameters
     self.weapon_base_sprite = pygame.image.load('sprites/weapons/shotgun/base/0.png').convert_alpha()
     self.weapon_shot_animation = deque([pygame.image.load(f'sprites/weapons/shotgun/shot/{i}.png').convert_alpha()
+                                        for i in range(20)])
+    self.weapon_rect = self.weapon_base_sprite.get_rect()
+    self.weapon_pos = (HALF_WIDTH - self.weapon_rect.width // 2, HEIGHT - self.weapon_rect.height)
+    self.shot_length = len(self.weapon_shot_animation)
+    self.shot_length_count = 0
+    self.shot_animation_speed = 3
+    self.shot_animation_count = 0
+    self.shot_animation_trigger = True
+    self.shot_sound = pygame.mixer.Sound('sound/shotgun.wav')
+    # sfx parameters
+    self.sfx = deque([pygame.image.load(f'sprites/weapons/sfx/{i}.png').convert_alpha() for i in range(9)])
+    self.sfx_length_count = 0
+    self.sfx_length = len(self.sfx)
+
     def backround(self):
         pygame.draw.rect(self.sc, DARKGRAY, (0, 0, width, half_heigth))
         pygame.draw.rect(self.sc, DARKGRAY, (0, half_heigth, width, half_heigth))
