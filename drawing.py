@@ -21,7 +21,9 @@ class Drawing:
     # menu
     self.menu_trigger = True
     self.menu_picture = pygame.image.load('img/bg.jpg').convert()
-    
+    # weapon parameters
+    self.weapon_base_sprite = pygame.image.load('sprites/weapons/shotgun/base/0.png').convert_alpha()
+    self.weapon_shot_animation = deque([pygame.image.load(f'sprites/weapons/shotgun/shot/{i}.png').convert_alpha()
     def backround(self):
         pygame.draw.rect(self.sc, DARKGRAY, (0, 0, width, half_heigth))
         pygame.draw.rect(self.sc, DARKGRAY, (0, half_heigth, width, half_heigth))
