@@ -51,11 +51,12 @@ class Drawing:
             if obj[0]:
                 _, object, object_pos = obj
                 self.sc.blit(object, object_pos)
-                
+
     def fps(self, clock):
         display_fps = str(int(clock.get_fps()))
-        render = self.font.render(display_fps, 0,RED)
-        self.sc.blit(render, FPS_pos)
+        render = self.font.render(display_fps, 0, DARKORANGE)
+        self.sc.blit(render, FPS_POS)
+        
     def mini_map (self, player):
         self.sc_map.fill(BLACK)
         map_x, map_y = player.x // MAP_SCALE, player.y // MAP_SCALE
