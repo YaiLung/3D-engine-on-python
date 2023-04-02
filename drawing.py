@@ -70,4 +70,24 @@ class Drawing:
         for x, y in mini_map:
             pygame.draw.rect(self.sc_map, GREEN, (x, y, MAP_TILE, MAP_TILE))
         self.sc.blit(self.sc_map, MAP_POS)
-
+    def player_weapon(self, shots):
+        if self.player.shot:
+            if not self.shot_length_count:
+                self.shot_sound.play()
+            self.shot_projection = min(shots)[1] // 2
+            self.bullet_sfx()
+            shot_sprite = self.weapon_shot_animation[0]
+            self.sc.blit(shot_sprite, self.weapon_pos)
+            self.shot_animation_count += 1
+            if self.shot_animation_count == self.shot_animation_speed:
+                self.weapon_shot_animation.rotate(-1)
+                self.shot_animation_count = 0
+                self.shot_length_count += 1
+                self.shot_animation_trigger = False
+            if self.shot_length_count == self.shot_length:
+                self.player.shot = False
+                self.shot_length_count = 0
+                self.sfx_length_count = 0
+                self.shot_animation_trigger = True
+        else:
+            self.sc.blit(self.weapon_base_sprite, self.weapon_pos)
