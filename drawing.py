@@ -91,3 +91,10 @@ class Drawing:
                 self.shot_animation_trigger = True
         else:
             self.sc.blit(self.weapon_base_sprite, self.weapon_pos)
+    def bullet_sfx(self):
+        if self.sfx_length_count < self.sfx_length:
+            sfx = pygame.transform.scale(self.sfx[0], (self.shot_projection, self.shot_projection))
+            sfx_rect = sfx.get_rect()
+            self.sc.blit(sfx, (HALF_WIDTH - sfx_rect.w // 2, HALF_HEIGHT - sfx_rect.h // 2))
+            self.sfx_length_count += 1
+            self.sfx.rotate(-1)
