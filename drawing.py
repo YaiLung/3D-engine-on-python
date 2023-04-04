@@ -98,3 +98,12 @@ class Drawing:
             self.sc.blit(sfx, (HALF_WIDTH - sfx_rect.w // 2, HALF_HEIGHT - sfx_rect.h // 2))
             self.sfx_length_count += 1
             self.sfx.rotate(-1)
+
+    def win(self):
+        render = self.font_win.render('you win!!!', 1, (randrange(40, 120), 0, 0))
+        rect = pygame.Rect(0, 0, 1000, 300)
+        rect.center = HALF_WIDTH, HALF_HEIGHT
+        pygame.draw.rect(self.sc, BLACK, rect, border_radius=50)
+        self.sc.blit(render, (rect.centerx - 430, rect.centery - 140))
+        pygame.display.flip()
+        self.clock.tick(15)
