@@ -118,3 +118,9 @@ class Drawing:
         exit = button_font.render('EXIT', 1, pygame.Color('lightgray'))
         button_exit = pygame.Rect(0, 0, 400, 150)
         button_exit.center = HALF_WIDTH, HALF_HEIGHT + 200
+
+        while self.menu_trigger:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
