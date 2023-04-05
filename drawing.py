@@ -137,3 +137,20 @@ class Drawing:
             color = randrange(40)
             label = label_font.render('никита', 1, (color, color, color))
             self.sc.blit(label, (10, -30))
+
+            mouse_pos = pygame.mouse.get_pos()
+            mouse_click = pygame.mouse.get_pressed()
+            if button_start.collidepoint(mouse_pos):
+                pygame.draw.rect(self.sc, BLACK, button_start, border_radius=25)
+                self.sc.blit(start, (button_start.centerx - 130, button_start.centery - 70))
+                if mouse_click[0]:
+                    self.menu_trigger = False
+            elif button_exit.collidepoint(mouse_pos):
+                pygame.draw.rect(self.sc, BLACK, button_exit, border_radius=25)
+                self.sc.blit(exit, (button_exit.centerx - 85, button_exit.centery - 70))
+                if mouse_click[0]:
+                    pygame.quit()
+                    sys.exit()
+
+            pygame.display.flip()
+            self.clock.tick(20)
