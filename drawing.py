@@ -135,7 +135,7 @@ class Drawing:
             self.sc.blit(exit, (button_exit.centerx - 85, button_exit.centery - 70))
 
             color = randrange(40)
-            label = label_font.render('никита', 1, (color, color, color))
+            label = label_font.render('!', 1, (color, color, color))
             self.sc.blit(label, (10, -30))
 
             mouse_pos = pygame.mouse.get_pos()
