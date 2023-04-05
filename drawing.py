@@ -107,3 +107,14 @@ class Drawing:
         self.sc.blit(render, (rect.centerx - 430, rect.centery - 140))
         pygame.display.flip()
         self.clock.tick(15)
+
+    def menu(self):
+        x = 0
+        button_font = pygame.font.Font('font/font.ttf', 72)
+        label_font = pygame.font.Font('font/font1.otf', 400)
+        start = button_font.render('START', 1, pygame.Color('lightgray'))
+        button_start = pygame.Rect(0, 0, 400, 150)
+        button_start.center = HALF_WIDTH, HALF_HEIGHT
+        exit = button_font.render('EXIT', 1, pygame.Color('lightgray'))
+        button_exit = pygame.Rect(0, 0, 400, 150)
+        button_exit.center = HALF_WIDTH, HALF_HEIGHT + 200
