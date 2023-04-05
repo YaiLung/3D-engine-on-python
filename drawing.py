@@ -124,3 +124,16 @@ class Drawing:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+
+            self.sc.blit(self.menu_picture, (0, 0), (x % WIDTH, HALF_HEIGHT, WIDTH, HEIGHT))
+            x += 1
+
+            pygame.draw.rect(self.sc, BLACK, button_start, border_radius=25, width=10)
+            self.sc.blit(start, (button_start.centerx - 130, button_start.centery - 70))
+
+            pygame.draw.rect(self.sc, BLACK, button_exit, border_radius=25, width=10)
+            self.sc.blit(exit, (button_exit.centerx - 85, button_exit.centery - 70))
+
+            color = randrange(40)
+            label = label_font.render('никита', 1, (color, color, color))
+            self.sc.blit(label, (10, -30))
