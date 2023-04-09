@@ -8,6 +8,13 @@ from numba import int32
 
 import os
 
+def load_image(path):
+    if os.path.exists(path):
+        return pygame.image.load(path).convert_alpha()
+    else:
+        print(f"Warning: File not found - {path}")
+        return None  # Или заглушку pygame.Surface((1, 1)) можно вернуть
+
 class Sprites:
     def __init__(self):
         self.sprite_parameters = {
