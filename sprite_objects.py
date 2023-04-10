@@ -18,24 +18,11 @@ def load_image(path):
 class Sprites:
     def __init__(self):
         self.sprite_parameters = {
-            
+
         }
 
         self.list_of_objects = [
-            SpriteObject(self.sprite_parameters['sprite_barrel'], (7.1, 2.1)),
-            SpriteObject(self.sprite_parameters['sprite_barrel'], (5.9, 2.1)),
-            SpriteObject(self.sprite_parameters['sprite_pin'], (8.7, 2.5)),
-            SpriteObject(self.sprite_parameters['npc_devil'], (7, 4)),
-            SpriteObject(self.sprite_parameters['sprite_flame'], (8.6, 5.6)),
-            SpriteObject(self.sprite_parameters['sprite_door_v'], (3.5, 3.5)),
-            SpriteObject(self.sprite_parameters['sprite_door_h'], (1.5, 4.5)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (2.5, 1.5)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (5.51, 1.5)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (6.61, 2.92)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (7.68, 1.47)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (8.75, 3.65)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (1.27, 11.5)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (1.26, 8.29)),
+     
         ]
 
     @property
