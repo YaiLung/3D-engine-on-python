@@ -18,11 +18,29 @@ def load_image(path):
 class Sprites:
     def __init__(self):
         self.sprite_parameters = {
+            'sprite_barrel': {
+                'sprite': pygame.image.load('sprites/barrel/base/0.png').convert_alpha(),
+                'viewing_angles': None,
+                'shift': 1.8,
+                'scale': (0.4, 0.4),
+                'side': 30,
+                'animation': deque(
+                    [pygame.image.load(f'sprites/barrel/anim/{i}.png').convert_alpha() for i in range(12)]),
+                'death_animation': deque([pygame.image.load(f'sprites/barrel/death/{i}.png')
+                                         .convert_alpha() for i in range(4)]),
+                'is_dead': None,
+                'dead_shift': 2.6,
+                'animation_dist': 800,
+                'animation_speed': 10,
+                'blocked': True,
+                'flag': 'decor',
+                'obj_action': []
+            }
 
         }
 
         self.list_of_objects = [
-     
+
         ]
 
     @property
