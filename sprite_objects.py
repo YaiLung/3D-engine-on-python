@@ -35,8 +35,23 @@ class Sprites:
                 'blocked': True,
                 'flag': 'decor',
                 'obj_action': []
+            },
+            'sprite_pin': {
+                'sprite': pygame.image.load('sprites/pin/base/0.png').convert_alpha(),
+                'viewing_angles': None,
+                'shift': 0.6,
+                'scale': (0.6, 0.6),
+                'side': 30,
+                'animation': deque([pygame.image.load(f'sprites/pin/anim/{i}.png').convert_alpha() for i in range(8)]),
+                'death_animation': [],
+                'is_dead': 'immortal',
+                'dead_shift': None,
+                'animation_dist': 800,
+                'animation_speed': 10,
+                'blocked': True,
+                'flag': 'decor',
+                'obj_action': []
             }
-
         }
 
         self.list_of_objects = [
