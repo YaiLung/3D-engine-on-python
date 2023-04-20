@@ -51,7 +51,25 @@ class Sprites:
                 'blocked': True,
                 'flag': 'decor',
                 'obj_action': []
+            },
+            'sprite_flame': {
+                'sprite': pygame.image.load('sprites/flame/base/0.png').convert_alpha(),
+                'viewing_angles': None,
+                'shift': 0.7,
+                'scale': (0.6, 0.6),
+                'side': 30,
+                'animation': deque(
+                    [pygame.image.load(f'sprites/flame/anim/{i}.png').convert_alpha() for i in range(16)]),
+                'death_animation': [],
+                'is_dead': 'immortal',
+                'dead_shift': 1.8,
+                'animation_dist': 1800,
+                'animation_speed': 5,
+                'blocked': None,
+                'flag': 'decor',
+                'obj_action': []
             }
+
         }
 
         self.list_of_objects = [
