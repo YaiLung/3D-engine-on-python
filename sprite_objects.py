@@ -68,7 +68,26 @@ class Sprites:
                 'blocked': None,
                 'flag': 'decor',
                 'obj_action': []
-            }
+            },
+            'npc_devil': {
+                'sprite': [pygame.image.load(f'sprites/devil/base/{i}.png').convert_alpha() for i in range(8)],
+                'viewing_angles': True,
+                'shift': 0.0,
+                'scale': (1.1, 1.1),
+                'side': 50,
+                'animation': [],
+                'death_animation': deque([pygame.image.load(f'sprites/devil/death/{i}.png')
+                                         .convert_alpha() for i in range(6)]),
+                'is_dead': None,
+                'dead_shift': 0.6,
+                'animation_dist': None,
+                'animation_speed': 10,
+                'blocked': True,
+                'flag': 'npc',
+                'obj_action': deque(
+                    [pygame.image.load(f'sprites/devil/anim/{i}.png').convert_alpha() for i in range(9)]),
+            },
+            
 
         }
 
