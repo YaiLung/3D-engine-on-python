@@ -102,7 +102,23 @@ class Sprites:
                 'blocked': True,
                 'flag': 'door_h',
                 'obj_action': []
-            }
+            },
+            'sprite_door_h': {
+                'sprite': [pygame.image.load(f'sprites/doors/door_h/{i}.png').convert_alpha() for i in range(16)],
+                'viewing_angles': True,
+                'shift': 0.1,
+                'scale': (2.6, 1.2),
+                'side': 100,
+                'animation': [],
+                'death_animation': [],
+                'is_dead': 'immortal',
+                'dead_shift': 0,
+                'animation_dist': 0,
+                'animation_speed': 0,
+                'blocked': True,
+                'flag': 'door_v',
+                'obj_action': []
+            },
 
         }
 
