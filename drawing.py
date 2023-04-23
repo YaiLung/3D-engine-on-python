@@ -1,7 +1,9 @@
 import pygame
 from settings import *
-from ray_casting import ray_Casting
 from map import mini_map
+from collections import deque
+from random import  randrange
+import sys
 
 class Drawing:
     def __init__(self, sc, sc_map, player, clock):
@@ -10,33 +12,32 @@ class Drawing:
         self.player = player
         self.clock = clock
         self.font = pygame.font.SysFont('Arial', 36, bold=True)
-        self.font_win = pygame.font.Font('font/font.ttf', 100)
-        self.textures = {1: pygame.image.load('img/1.png').convert(),
+        self.font_win = pygame.font.Font('font/font.ttf', 144)
+        self.textures = {1: pygame.image.load('img/wall3.png').convert(),
                          2: pygame.image.load('img/wall4.png').convert(),
                          3: pygame.image.load('img/wall5.png').convert(),
                          4: pygame.image.load('img/wall6.png').convert(),
                          'S': pygame.image.load('img/sky2.png').convert()
                          }
-
-    # menu
-    self.menu_trigger = True
-    self.menu_picture = pygame.image.load('img/bg.jpg').convert()
-    # weapon parameters
-    self.weapon_base_sprite = pygame.image.load('sprites/weapons/shotgun/base/0.png').convert_alpha()
-    self.weapon_shot_animation = deque([pygame.image.load(f'sprites/weapons/shotgun/shot/{i}.png').convert_alpha()
-                                        for i in range(20)])
-    self.weapon_rect = self.weapon_base_sprite.get_rect()
-    self.weapon_pos = (HALF_WIDTH - self.weapon_rect.width // 2, HEIGHT - self.weapon_rect.height)
-    self.shot_length = len(self.weapon_shot_animation)
-    self.shot_length_count = 0
-    self.shot_animation_speed = 3
-    self.shot_animation_count = 0
-    self.shot_animation_trigger = True
-    self.shot_sound = pygame.mixer.Sound('sound/shotgun.wav')
-    # sfx parameters
-    self.sfx = deque([pygame.image.load(f'sprites/weapons/sfx/{i}.png').convert_alpha() for i in range(9)])
-    self.sfx_length_count = 0
-    self.sfx_length = len(self.sfx)
+        # menu
+        self.menu_trigger = True
+        self.menu_picture = pygame.image.load('img/bg.jpg').convert()
+        # weapon parameters
+        self.weapon_base_sprite = pygame.image.load('sprites/weapons/shotgun/base/0.png').convert_alpha()
+        self.weapon_shot_animation = deque([pygame.image.load(f'sprites/weapons/shotgun/shot/{i}.png').convert_alpha()
+                                            for i in range(20)])
+        self.weapon_rect = self.weapon_base_sprite.get_rect()
+        self.weapon_pos = (HALF_WIDTH - self.weapon_rect.width // 2, HEIGHT - self.weapon_rect.height)
+        self.shot_length = len(self.weapon_shot_animation)
+        self.shot_length_count = 0
+        self.shot_animation_speed = 3
+        self.shot_animation_count = 0
+        self.shot_animation_trigger = True
+        self.shot_sound = pygame.mixer.Sound('sound/shotgun.wav')
+        # sfx parameters
+        self.sfx = deque([pygame.image.load(f'sprites/weapons/sfx/{i}.png').convert_alpha() for i in range(9)])
+        self.sfx_length_count = 0
+        self.sfx_length = len(self.sfx)
 
     def background(self, angle):
         sky_offset = -10 * math.degrees(angle) % WIDTH
@@ -44,7 +45,6 @@ class Drawing:
         self.sc.blit(self.textures['S'], (sky_offset - WIDTH, 0))
         self.sc.blit(self.textures['S'], (sky_offset + WIDTH, 0))
         pygame.draw.rect(self.sc, DARKGRAY, (0, HALF_HEIGHT, WIDTH, HALF_HEIGHT))
-
 
     def world(self, world_objects):
         for obj in sorted(world_objects, key=lambda n: n[0], reverse=True):
@@ -67,9 +67,6 @@ class Drawing:
             pygame.draw.rect(self.sc_map, DARKBROWN, (x, y, MAP_TILE, MAP_TILE))
         self.sc.blit(self.sc_map, MAP_POS)
 
-        for x, y in mini_map:
-            pygame.draw.rect(self.sc_map, GREEN, (x, y, MAP_TILE, MAP_TILE))
-        self.sc.blit(self.sc_map, MAP_POS)
     def player_weapon(self, shots):
         if self.player.shot:
             if not self.shot_length_count:
@@ -91,6 +88,7 @@ class Drawing:
                 self.shot_animation_trigger = True
         else:
             self.sc.blit(self.weapon_base_sprite, self.weapon_pos)
+
     def bullet_sfx(self):
         if self.sfx_length_count < self.sfx_length:
             sfx = pygame.transform.scale(self.sfx[0], (self.shot_projection, self.shot_projection))
@@ -100,7 +98,7 @@ class Drawing:
             self.sfx.rotate(-1)
 
     def win(self):
-        render = self.font_win.render('you win!!!', 1, (randrange(40, 120), 0, 0))
+        render = self.font_win.render('YOU WIN!!!', 1, (randrange(40, 120), 0, 0))
         rect = pygame.Rect(0, 0, 1000, 300)
         rect.center = HALF_WIDTH, HALF_HEIGHT
         pygame.draw.rect(self.sc, BLACK, rect, border_radius=50)
@@ -135,8 +133,8 @@ class Drawing:
             self.sc.blit(exit, (button_exit.centerx - 85, button_exit.centery - 70))
 
             color = randrange(40)
-            label = label_font.render('!', 1, (color, color, color))
-            self.sc.blit(label, (10, -30))
+            label = label_font.render('DOOMPy', 1, (color, color, color))
+            self.sc.blit(label, (15, -30))
 
             mouse_pos = pygame.mouse.get_pos()
             mouse_click = pygame.mouse.get_pressed()
