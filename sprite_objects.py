@@ -126,6 +126,7 @@ class Sprites:
             SpriteObject(self.sprite_parameters['sprite_barrel'], (7.1, 2.1)),
             SpriteObject(self.sprite_parameters['sprite_barrel'], (5.9, 2.1)),
             SpriteObject(self.sprite_parameters['sprite_pin'], (8.7, 2.5)),
+            SpriteObject(self.sprite_parameters['npc_devil'], (7, 4)),
 
         ]
 
