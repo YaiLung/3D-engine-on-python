@@ -128,6 +128,7 @@ class Sprites:
             SpriteObject(self.sprite_parameters['sprite_pin'], (8.7, 2.5)),
             SpriteObject(self.sprite_parameters['npc_devil'], (7, 4)),
             SpriteObject(self.sprite_parameters['sprite_flame'], (8.6, 5.6)),
+            SpriteObject(self.sprite_parameters['sprite_door_v'], (3.5, 3.5)),
 
         ]
 
