@@ -6,6 +6,14 @@ from numba.core import types
 from numba.typed import Dict
 from numba import int32
 
+import os
+
+def load_image(path):
+    if os.path.exists(path):
+        return pygame.image.load(path).convert_alpha()
+    else:
+        print(f"Warning: File not found - {path}")
+        return None  # Или заглушку pygame.Surface((1, 1)) можно вернуть
 
 class Sprites:
     def __init__(self):
@@ -19,7 +27,7 @@ class Sprites:
                 'animation': deque(
                     [pygame.image.load(f'sprites/barrel/anim/{i}.png').convert_alpha() for i in range(12)]),
                 'death_animation': deque([pygame.image.load(f'sprites/barrel/death/{i}.png')
-                                          .convert_alpha() for i in range(4)]),
+                                         .convert_alpha() for i in range(4)]),
                 'is_dead': None,
                 'dead_shift': 2.6,
                 'animation_dist': 800,
@@ -69,7 +77,7 @@ class Sprites:
                 'side': 50,
                 'animation': [],
                 'death_animation': deque([pygame.image.load(f'sprites/devil/death/{i}.png')
-                                           .convert_alpha() for i in range(6)]),
+                                         .convert_alpha() for i in range(6)]),
                 'is_dead': None,
                 'dead_shift': 0.6,
                 'animation_dist': None,
@@ -111,24 +119,7 @@ class Sprites:
                 'flag': 'door_v',
                 'obj_action': []
             },
-            'npc_soldier0': {
-                'sprite': [pygame.image.load(f'sprites/npc/soldier0/base/{i}.png').convert_alpha() for i in range(8)],
-                'viewing_angles': True,
-                'shift': 0.8,
-                'scale': (0.4, 0.6),
-                'side': 30,
-                'animation': [],
-                'death_animation': deque([pygame.image.load(f'sprites/npc/soldier0/death/{i}.png')
-                                         .convert_alpha() for i in range(10)]),
-                'is_dead': None,
-                'dead_shift': 1.7,
-                'animation_dist': None,
-                'animation_speed': 6,
-                'blocked': True,
-                'flag': 'npc',
-                'obj_action': deque([pygame.image.load(f'sprites/npc/soldier0/action/{i}.png')
-                                    .convert_alpha() for i in range(4)])
-            },
+
         }
 
         self.list_of_objects = [
@@ -139,13 +130,7 @@ class Sprites:
             SpriteObject(self.sprite_parameters['sprite_flame'], (8.6, 5.6)),
             SpriteObject(self.sprite_parameters['sprite_door_v'], (3.5, 3.5)),
             SpriteObject(self.sprite_parameters['sprite_door_h'], (1.5, 4.5)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (2.5, 1.5)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (5.51, 1.5)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (6.61, 2.92)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (7.68, 1.47)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (8.75, 3.65)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (1.27, 11.5)),
-            SpriteObject(self.sprite_parameters['npc_soldier0'], (1.26, 8.29)),
+
         ]
 
     @property
